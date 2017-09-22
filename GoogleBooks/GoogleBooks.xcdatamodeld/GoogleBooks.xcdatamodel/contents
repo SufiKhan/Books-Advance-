@@ -1,4 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AccessInfo" representedClassName="AccessInfo" syncable="YES">
+        <attribute name="accessViewStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="embeddable" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="publicDomain" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="quoteSharingAllowed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="textToSpeechPermission" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="viewability" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webReaderLink" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ePub" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Epub" inverseName="accessInfo" inverseEntity="Epub" syncable="YES"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Items" inverseName="accessInfo" inverseEntity="Items" syncable="YES"/>
+        <relationship name="pdf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pdf" inverseName="accessInfo" inverseEntity="Pdf" syncable="YES"/>
+    </entity>
+    <entity name="Author" representedClassName="Author" syncable="YES">
+        <attribute name="authors" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="volumeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VolumeInfo" inverseName="authors" inverseEntity="VolumeInfo" syncable="YES"/>
+    </entity>
+    <entity name="Categories" representedClassName="Categories" syncable="YES">
+        <attribute name="categories" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="volumeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VolumeInfo" inverseName="categories" inverseEntity="VolumeInfo" syncable="YES"/>
+    </entity>
+    <entity name="Epub" representedClassName="Epub" syncable="YES">
+        <attribute name="isAvailable" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="accessInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccessInfo" inverseName="ePub" inverseEntity="AccessInfo" syncable="YES"/>
+    </entity>
+    <entity name="ImageLinks" representedClassName="ImageLinks" syncable="YES">
+        <attribute name="smallThumbnail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="volumeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VolumeInfo" inverseName="imageLinks" inverseEntity="VolumeInfo" syncable="YES"/>
+    </entity>
+    <entity name="IndustryIdentifiers" representedClassName="IndustryIdentifiers" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="volumeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VolumeInfo" inverseName="industryIdentifiers" inverseEntity="VolumeInfo" syncable="YES"/>
+    </entity>
+    <entity name="Items" representedClassName="Items" syncable="YES">
+        <attribute name="eTag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isPending" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kind" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sellfLink" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="accessInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccessInfo" inverseName="items" inverseEntity="AccessInfo" syncable="YES"/>
+        <relationship name="saleInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SaleInfo" inverseName="items" inverseEntity="SaleInfo" syncable="YES"/>
+        <relationship name="volumeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VolumeInfo" inverseName="items" inverseEntity="VolumeInfo" syncable="YES"/>
+    </entity>
+    <entity name="Pdf" representedClassName="Pdf" syncable="YES">
+        <attribute name="downloadLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAvailable" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="accessInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccessInfo" inverseName="pdf" inverseEntity="AccessInfo" syncable="YES"/>
+    </entity>
+    <entity name="ReadingModes" representedClassName="ReadingModes" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="volumeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VolumeInfo" inverseName="readingMode" inverseEntity="VolumeInfo" syncable="YES"/>
+    </entity>
+    <entity name="SaleInfo" representedClassName="SaleInfo" syncable="YES">
+        <attribute name="buyLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isEBook" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="saleability" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Items" inverseName="saleInfo" inverseEntity="Items" syncable="YES"/>
+    </entity>
+    <entity name="VolumeInfo" representedClassName="VolumeInfo" syncable="YES">
+        <attribute name="allowAnonLogging" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="averageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="averageRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="canonicalVolumeLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contentVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maturityRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="previewLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="printType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishedData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="authors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="volumeInfo" inverseEntity="Author" syncable="YES"/>
+        <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="volumeInfo" inverseEntity="Categories" syncable="YES"/>
+        <relationship name="imageLinks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageLinks" inverseName="volumeInfo" inverseEntity="ImageLinks" syncable="YES"/>
+        <relationship name="industryIdentifiers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IndustryIdentifiers" inverseName="volumeInfo" inverseEntity="IndustryIdentifiers" syncable="YES"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Items" inverseName="volumeInfo" inverseEntity="Items" syncable="YES"/>
+        <relationship name="readingMode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReadingModes" inverseName="volumeInfo" inverseEntity="ReadingModes" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AccessInfo" positionX="-54" positionY="0" width="128" height="210"/>
+        <element name="Author" positionX="-9" positionY="81" width="128" height="75"/>
+        <element name="Categories" positionX="-18" positionY="90" width="128" height="75"/>
+        <element name="Epub" positionX="18" positionY="171" width="128" height="75"/>
+        <element name="ImageLinks" positionX="0" positionY="135" width="128" height="90"/>
+        <element name="IndustryIdentifiers" positionX="9" positionY="99" width="128" height="90"/>
+        <element name="Items" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Pdf" positionX="27" positionY="180" width="128" height="90"/>
+        <element name="ReadingModes" positionX="27" positionY="117" width="128" height="90"/>
+        <element name="SaleInfo" positionX="9" positionY="162" width="128" height="120"/>
+        <element name="VolumeInfo" positionX="-27" positionY="54" width="128" height="345"/>
+    </elements>
 </model>
