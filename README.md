@@ -1,6 +1,12 @@
 # Books Sample App for skill demonstration
-Includes Filtering, Searching, Rating, Updating and previewing books
+Includes **Core data**
+1. Previewing online google books from Server.
+2. Filtering. 
+3. Searching. 
+4. Rating.
+5. Updating.
 
+**TAP ON IMAGE TO PLAY VIDEO**
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v= zZEA9XCasKs
 " target="_blank"><img src="http://img.youtube.com/vi/zZEA9XCasKs/0.jpg" 
